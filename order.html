@@ -4,37 +4,190 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Order ahead from Campus Café and collect at the counter.">
-  <title>Campus Café | Order</title>
+  <title>Place an Order | Campus Café</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/order.js" defer></script>
 </head>
-<body id="top">
+<body>
+
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header class="site-header">
-    <a class="brand" href="index.html">
-      <img src="images/logo.svg" alt="" width="40" height="40">
-      <span>Campus Café</span>
-    </a>
-    <nav aria-label="Main">
+    <div class="brand">
+      <a href="index.html">Campus Café</a>
+    </div>
+
+    <nav aria-label="Main navigation">
       <ul class="nav-list">
         <li><a href="index.html">Home</a></li>
         <li><a href="menu.html">Menu</a></li>
-        <li><a href="order.html" class="active" aria-current="page">Order</a></li>
+        <li><a href="order.html" aria-current="page">Order</a></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
-    <h1>Place an order</h1>
-    <p>The order form is coming in Task 3.</p>
+    <section>
+      <h1>Place Your Order</h1>
+      <p>Fill in the form below to place your café order.</p>
+
+      <p id="message" role="status" aria-live="polite"></p>
+
+      <form id="order-form" action="#" method="post">
+
+        <div class="form-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              minlength="3"
+              maxlength="60"
+              required>
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              pattern="03[0-9]{9}"
+              title="Enter 11 digits starting with 03, for example 03001234567"
+              required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="item">Choose an item</label>
+            <select id="item" name="item" required>
+              <option value="">Choose an item...</option>
+              <option value="Coffee">Coffee</option>
+              <option value="Tea">Tea</option>
+              <option value="Sandwich">Sandwich</option>
+              <option value="Burger">Burger</option>
+              <option value="Cake">Cake</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="qty">Quantity</label>
+            <input
+              type="number"
+              id="qty"
+              name="qty"
+              min="1"
+              max="10"
+              value="1"
+              required>
+          </div>
+
+          <div class="field">
+            <label for="pickup">Pickup time</label>
+            <input
+              type="time"
+              id="pickup"
+              name="pickup"
+              min="08:00"
+              max="18:00"
+              required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <fieldset class="choice">
+            <legend>Size</legend>
+
+            <label>
+              <input type="radio" name="size" value="Small" required>
+              Small
+            </label>
+
+            <label>
+              <input type="radio" name="size" value="Medium">
+              Medium
+            </label>
+
+            <label>
+              <input type="radio" name="size" value="Large">
+              Large
+            </label>
+          </fieldset>
+
+          <fieldset class="choice">
+            <legend>Extras</legend>
+
+            <label>
+              <input type="checkbox" name="extras" value="Extra cheese">
+              Extra cheese
+            </label>
+
+            <label>
+              <input type="checkbox" name="extras" value="Extra sauce">
+              Extra sauce
+            </label>
+
+            <label>
+              <input type="checkbox" name="extras" value="Whipped cream">
+              Whipped cream
+            </label>
+          </fieldset>
+        </div>
+
+        <div class="field">
+          <label for="notes">Additional notes (optional)</label>
+          <textarea
+            id="notes"
+            name="notes"
+            rows="3"
+            maxlength="300"></textarea>
+        </div>
+
+        <button class="btn" type="submit">Place Order</button>
+      </form>
+    </section>
+
+    <section class="saved-orders">
+      <h2>Saved Orders</h2>
+      <p>Orders are stored in this browser only.</p>
+      <p id="order-count" aria-live="polite">You have placed 0 orders.</p>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Orders placed from this browser</caption>
+          <thead>
+            <tr>
+              <th scope="col">Order ID</th>
+              <th scope="col">Name</th>
+              <th scope="col">Order</th>
+              <th scope="col">Qty</th>
+              <th scope="col">Pickup</th>
+              <th scope="col">Extras</th>
+            </tr>
+          </thead>
+          <tbody id="orders-body">
+            <tr>
+              <td colspan="6">Loading orders...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button
+        type="button"
+        id="clear-orders"
+        class="btn btn-secondary">
+        Clear All Orders
+      </button>
+    </section>
   </main>
 
   <footer class="site-footer">
-    <p>&copy; 2026 Campus Café &middot; Built for CIT331</p>
-    <p>Learn more: <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">MDN Web Docs</a></p>
+    <p>&copy; 2026 Campus Café</p>
+    <a href="#main">Back to top</a>
   </footer>
 
-  <a class="back-to-top" href="#top" aria-label="Back to top">&uarr;</a>
 </body>
 </html>
