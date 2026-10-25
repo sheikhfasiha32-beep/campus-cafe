@@ -12,19 +12,18 @@ body {
 
 .btn {
   background: #1e56d6;
-  colour: #ffffff;
+  color: #ffffff;
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
 }
 
 .btn:hover {
-  background: #0b1f3a
+  background: #0b1f3a;
   cursor: pointer;
 }
 
-
-.notes {
+.note {
   font-style: italic;
-  color: #999999;
+  color: #666666;
 }

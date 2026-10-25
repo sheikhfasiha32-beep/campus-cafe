@@ -1,7 +1,12 @@
-/* ===== Campus Café: styles.css ===== */
 
-/* ---------- 1. Reset, tokens and base typography ---------- */
-*, *::before, *::after {
+/* ==================================================
+   CAMPUS CAFE - COMPLETE RESPONSIVE STYLESHEET
+   ================================================== */
+
+/* 1. Reset and variables */
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -14,34 +19,64 @@
   --text: #2a1b12;
   --muted: #6b5a4e;
   --border: #e3d6c9;
-  --space: 16px;
   --radius: 12px;
+  --shadow: 0 4px 14px rgba(59, 31, 14, 0.09);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 140px;
 }
 
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
-  font-size: 1rem;
+  font-size: 16px;
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
 }
-/* ---------- 2. Headings, links, focus ---------- */
-h1, h2, h3 {
-  font-family: Georgia, "Times New Roman", serif;
-  color: var(--brand-dark);
-  line-height: 1.2;
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
-h1 { font-size: 2.25rem; margin: 0 0 var(--space); }
-h2 { font-size: 1.6rem; margin: 0 0 var(--space); }
-h3 { font-size: 1.2rem; margin: 0 0 8px; }
+h1,
+h2,
+h3,
+h4 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--brand-dark);
+  line-height: 1.25;
+}
 
-a { color: var(--brand); }
+h1 {
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  margin: 0 0 16px;
+}
+
+h2 {
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+  margin: 0 0 16px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 0 0 10px;
+}
+
+p {
+  margin-top: 0;
+}
+
+a {
+  color: var(--brand);
+}
 
 a:hover {
   color: var(--brand-dark);
-  text-decoration-thickness: 3px;
 }
 
 a:focus-visible,
@@ -49,215 +84,166 @@ button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid var(--brand);
+  outline: 3px solid var(--accent);
   outline-offset: 3px;
 }
-/* ---------- 3. Page shell ---------- */
-#main {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 24px;
-}
 
-main > section,
-main > aside,
-main > figure {
-  margin: 0 0 32px;
-}
-
-h1 + p {
-  font-size: 1.1rem;
-  color: var(--muted);
-}
-
-/* ---------- 4. Header and navigation ---------- */
+/* 2. Header and navigation */
 .site-header {
-  background: var(--brand-dark);
-  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
   padding: 12px 24px;
+  color: #fff;
+  background: var(--brand-dark);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
 }
 
 .brand {
+  display: inline-block;
   color: #fff;
-  text-decoration: none;
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   font-weight: 700;
-}
-.nav-list {
-  list-style: none;
-  margin: 12px 0 0;
-  padding: 0;
-}
-
-.nav-list li {
-  display: inline-block;
-}
-
-.nav-list a {
-  display: inline-block;
-  color: #fff;
   text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 8px;
 }
 
-.nav-list a:not(.active):hover {
-  background: rgba(255, 255, 255, 0.18);
+.brand:hover {
+  color: var(--accent);
 }
 
-.nav-list a.active {
-  background: var(--accent);
-  color: var(--text);
-  font-weight: 700;
-}
-.nav-list li {
-  display: inline-block;
-}
-
-.nav-list a {
-  display: inline-block;
-  color: #fff;
-  text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 8px;
-}
-
-.nav-list a:not(.active):hover {
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.nav-list a.active {
-  background: var(--accent);
-  color: var(--text);
-  font-weight: 700;
-}
-
-/* ---------- 5. Footer ---------- */
-.site-footer {
-  background: var(--brand-dark);
-  color: #fff;
-  padding: 20px 24px;
-}
-
-.site-footer p {
-  margin: 4px 0;
-}
-
-.site-footer a {
-  color: #fff;
-}
-
+.site-header nav,
 nav {
   margin-top: 8px;
 }
 
 .nav-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.site-footer {
-  background: var(--brand-dark);
-  color: #fff;
-  padding: 24px;
-  text-align: center;
-}
-
-.site-footer a {
-  color: #fff;
-}
-.site-nav {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
-.site-nav a {
+.nav-list li {
+  margin: 0;
+}
+
+.nav-list a {
+  display: inline-block;
+  padding: 8px 12px;
   color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: background 0.2s ease;
 }
 
-.site-nav a:hover {
-  color: var(--accent);
-}
-
-.site-footer {
-  background: var(--brand-dark);
+.nav-list a:hover {
   color: #fff;
-  padding: 24px;
-  text-align: center;
+  background: rgba(255, 255, 255, 0.15);
 }
 
-.site-footer a {
-  color: #fff;
+.nav-list a.active,
+.nav-list a[aria-current="page"] {
+  color: var(--brand-dark);
+  background: var(--accent);
+  font-weight: 700;
 }
 
-/* ---------- 6. Hero, buttons, cards ---------- */
+/* 3. Main page layout */
+#main,
+main {
+  width: min(100% - 32px, 1100px);
+  margin: 24px auto;
+}
+
+main > section,
+main > aside {
+  margin-bottom: 28px;
+}
+
+/* 4. Hero section */
 .hero {
-  background: var(--brand);
+  padding: clamp(24px, 5vw, 44px);
   color: #fff;
-  padding: 48px 32px;
+  background: var(--brand);
   border-radius: var(--radius);
 }
 
 .hero h1,
+.hero h2,
+.hero h3,
 .hero p {
   color: #fff;
 }
 
-.hero h1 {
-  margin-bottom: 12px;
+.hero p {
+  max-width: 700px;
+  margin-bottom: 0;
 }
 
-.btn {
-  display: inline-block;
-  background: var(--accent);
-  color: var(--text);
-  font: inherit;
-  font-weight: 700;
-  padding: 12px 24px;
-  border: 2px solid var(--accent);
-  border-radius: 999px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: var(--brand-dark);
-  border-color: var(--brand-dark);
-  color: #fff;
-}
-
-.btn-secondary {
-  background: transparent;
-  color: var(--brand-dark);
-  border-color: var(--brand-dark);
-}
-
-.btn-secondary:hover {
-  background: var(--brand-dark);
-  color: #fff;
-}
-
-.card {
+/* 5. General cards */
+.card,
+.menu-card,
+.feature-card,
+.info-card {
+  min-width: 0;
+  padding: 22px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 20px;
-  box-shadow: 0 2px 6px rgba(59, 31, 14, 0.08);
+  box-shadow: var(--shadow);
+  overflow-wrap: anywhere;
 }
 
-.logo-figure {
-  text-align: center;
+.card {
+  margin-bottom: 24px;
 }
 
-figcaption {
-  color: var(--muted);
-  font-size: 0.9rem;
+.card > :last-child,
+.menu-card > :last-child,
+.feature-card > :last-child,
+.info-card > :last-child {
+  margin-bottom: 0;
 }
 
-/* ---------- 7. Menu, tables ---------- */
+/* Hover effect for cards */
+.menu-card,
+.feature-card,
+.info-card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.menu-card:hover,
+.feature-card:hover,
+.info-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(59, 31, 14, 0.13);
+}
+
+/* 6. Menu card grids
+   Supports common menu grid class names. */
+.menu-grid,
+.menu-cards,
+.menu-items,
+.cards-grid,
+.card-grid,
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+}
+
+.menu-group {
+  margin-bottom: 36px;
+}
+
 .menu-group h2::before {
   content: "";
   display: inline-block;
@@ -269,26 +255,118 @@ figcaption {
   vertical-align: -0.12em;
 }
 
+/* Support the original menu-item class */
 .menu-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 20px;
+  margin-bottom: 18px;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px 20px;
-  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+  overflow-wrap: anywhere;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.menu-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 22px rgba(59, 31, 14, 0.13);
+}
+
+.menu-item h3 {
+  margin: 0 0 8px;
 }
 
 .menu-item p {
-  margin: 0;
   color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.menu-item img,
+.menu-card img {
+  width: 100%;
+  height: 190px;
+  margin-bottom: 16px;
+  object-fit: cover;
+  border-radius: 9px;
+}
+
+.item-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
 .item-head h3 {
-  margin: 0;
+  flex: 1 1 140px;
 }
 
 .price {
-  font-weight: 700;
   color: var(--brand);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* Card buttons stay at the bottom when available */
+.menu-card .btn,
+.feature-card .btn,
+.info-card .btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* 7. Buttons */
+.btn,
+button.btn {
+  display: inline-block;
+  max-width: 100%;
+  padding: 11px 20px;
+  font: inherit;
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  color: var(--brand-dark);
+  background: var(--accent);
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn:hover,
+button.btn:hover {
+  color: #fff;
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+}
+
+.btn-secondary {
+  color: var(--brand-dark);
+  background: transparent;
+  border-color: var(--brand-dark);
+}
+
+.btn-secondary:hover {
+  color: #fff;
+  background: var(--brand-dark);
+}
+
+/* 8. Tables */
+.table-wrap {
+  width: 100%;
+  margin: 16px 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 table {
@@ -298,92 +376,345 @@ table {
 }
 
 caption {
-  text-align: left;
   padding: 8px 0;
+  text-align: left;
   color: var(--muted);
-  font-size: 0.9rem;
 }
 
 th,
 td {
+  padding: 11px 12px;
   text-align: left;
-  padding: 10px 12px;
-  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  border: 1px solid var(--border);
+  overflow-wrap: anywhere;
 }
 
 thead th {
-  background: var(--brand-dark);
   color: #fff;
-}
-
-tbody th {
-  font-weight: 600;
+  background: var(--brand-dark);
 }
 
 tbody tr:nth-child(even) {
   background: #fbf6f0;
 }
 
-/* ---------- 8. Attribute selectors and pseudo-elements ---------- */
-a[href^="http"]::after {
-  content: " \2197";
-  font-size: 0.85em;
+/* 9. Order form layout */
+.order-section {
+  margin-top: 24px;
 }
 
-/* ---------- 9. Forms ---------- */
-form > fieldset {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 16px 20px;
-  margin: 0 0 20px;
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 12px;
 }
 
+.field {
+  display: flex;
+  flex: 1 1 220px;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+  margin-bottom: 18px;
+}
+
+label,
 legend {
-  font-weight: 700;
-  padding: 0 8px;
-  color: var(--brand-dark);
-}
-
-label {
   font-weight: 600;
 }
 
 input,
 select,
 textarea {
-  font: inherit;
+  display: block;
   width: 100%;
-  padding: 10px 12px;
+  min-width: 0;
+  padding: 11px 12px;
+  font: inherit;
+  color: var(--text);
+  background: #fff;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: #fff;
-  color: var(--text);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--brand);
 }
 
 input[type="radio"],
 input[type="checkbox"] {
+  display: inline-block;
   width: auto;
-  margin-right: 8px;
+  min-width: auto;
+  margin-right: 6px;
+  accent-color: var(--brand);
 }
 
-input[required],
-select[required] {
-  border-left: 4px solid var(--accent);
+fieldset.choice {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 16px;
+  margin: 0 0 18px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
 }
 
-input[placeholder]:not(:placeholder-shown):invalid {
-  border-color: #b3261e;
+fieldset.choice label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 8px 12px 4px 0;
+  font-weight: 400;
 }
 
-::placeholder {
-  color: var(--muted);
-  opacity: 1;
+fieldset.choice input {
+  padding: 0;
 }
 
+legend {
+  padding: 0 6px;
+  color: var(--brand-dark);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* 10. Order status messages */
 #message {
-  min-height: 1.6em;
+  min-height: 1.5em;
+  margin: 10px 0;
   font-weight: 600;
-  color: #0a6b50;
 }
 
+#message.success {
+  color: #176b43;
+}
+
+#message.error {
+  color: #b3261e;
+}
+
+/* 11. Saved orders */
+.saved-orders {
+  margin-top: 32px;
+}
+
+.delete-order {
+  padding: 6px 10px;
+  font: inherit;
+  color: #fff;
+  background: #a52a2a;
+  border: 0;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.delete-order:hover {
+  background: #7d1e1e;
+}
+
+/* 12. Images and figures */
+figure {
+  max-width: 100%;
+  margin: 0 0 20px;
+}
+
+figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* 13. Footer */
+.site-footer {
+  padding: 24px;
+  text-align: center;
+  color: #fff;
+  background: var(--brand-dark);
+}
+
+.site-footer p {
+  margin: 4px 0;
+}
+
+.site-footer a {
+  color: #fff;
+}
+
+/* 14. Back-to-top link, if used */
+.back-to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 900;
+  display: inline-block;
+  padding: 10px 14px;
+  color: #fff;
+  background: var(--brand-dark);
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+
+.back-to-top:hover {
+  color: #fff;
+  background: var(--brand);
+}
+
+/* 15. Tablet screens */
+@media (max-width: 900px) {
+  .menu-grid,
+  .menu-cards,
+  .menu-items,
+  .cards-grid,
+  .card-grid,
+  .feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .menu-item img,
+  .menu-card img {
+    height: 175px;
+  }
+}
+
+/* 16. Mobile screens */
+@media (max-width: 600px) {
+  html {
+    scroll-padding-top: 160px;
+  }
+
+  .site-header {
+    padding: 12px 16px;
+  }
+
+  .brand {
+    font-size: 1.3rem;
+  }
+
+  .nav-list {
+    gap: 5px;
+  }
+
+  .nav-list a {
+    padding: 7px 9px;
+    font-size: 0.92rem;
+  }
+
+  #main,
+  main {
+    width: calc(100% - 24px);
+    margin: 16px auto;
+  }
+
+  .hero {
+    padding: 26px 20px;
+  }
+
+  .card,
+  .menu-card,
+  .feature-card,
+  .info-card {
+    padding: 18px;
+  }
+
+  .menu-grid,
+  .menu-cards,
+  .menu-items,
+  .cards-grid,
+  .card-grid,
+  .feature-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .menu-item {
+    padding: 17px;
+  }
+
+  .menu-item img,
+  .menu-card img {
+    height: 200px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .field,
+  fieldset.choice {
+    width: 100%;
+    flex-basis: auto;
+  }
+
+  .button-row {
+    flex-direction: column;
+  }
+
+  .button-row .btn {
+    width: 100%;
+  }
+
+  .table-wrap table {
+    min-width: 620px;
+  }
+
+  .site-footer {
+    padding: 20px 14px;
+  }
+}
+
+/* 17. Small mobile screens */
+@media (max-width: 360px) {
+  .nav-list {
+    gap: 3px;
+  }
+
+  .nav-list a {
+    padding: 6px 7px;
+    font-size: 0.85rem;
+  }
+
+  .hero {
+    padding: 22px 16px;
+  }
+
+  .card,
+  .menu-card,
+  .feature-card,
+  .info-card {
+    padding: 14px;
+  }
+
+  .menu-item img,
+  .menu-card img {
+    height: 165px;
+  }
+}
+
+/* 18. Reduce animations for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
