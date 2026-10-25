@@ -192,3 +192,67 @@ nav {
 .site-footer a {
   color: #fff;
 }
+
+/* ---------- 6. Hero, buttons, cards ---------- */
+.hero {
+  background: var(--brand);
+  color: #fff;
+  padding: 48px 32px;
+  border-radius: var(--radius);
+}
+
+.hero h1,
+.hero p {
+  color: #fff;
+}
+
+.hero h1 {
+  margin-bottom: 12px;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  padding: 12px 24px;
+  border: 2px solid var(--accent);
+  border-radius: 999px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--brand-dark);
+  border-color: var(--brand-dark);
+  color: #fff;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--brand-dark);
+  border-color: var(--brand-dark);
+}
+
+.btn-secondary:hover {
+  background: var(--brand-dark);
+  color: #fff;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(59, 31, 14, 0.08);
+}
+
+.logo-figure {
+  text-align: center;
+}
+
+figcaption {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
