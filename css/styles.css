@@ -1,0 +1,194 @@
+/* ===== Campus Café: styles.css ===== */
+
+/* ---------- 1. Reset, tokens and base typography ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --brand: #7a3e1d;
+  --brand-dark: #3b1f0e;
+  --accent: #d98c2b;
+  --bg: #faf6f1;
+  --surface: #ffffff;
+  --text: #2a1b12;
+  --muted: #6b5a4e;
+  --border: #e3d6c9;
+  --space: 16px;
+  --radius: 12px;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg);
+}
+/* ---------- 2. Headings, links, focus ---------- */
+h1, h2, h3 {
+  font-family: Georgia, "Times New Roman", serif;
+  color: var(--brand-dark);
+  line-height: 1.2;
+}
+
+h1 { font-size: 2.25rem; margin: 0 0 var(--space); }
+h2 { font-size: 1.6rem; margin: 0 0 var(--space); }
+h3 { font-size: 1.2rem; margin: 0 0 8px; }
+
+a { color: var(--brand); }
+
+a:hover {
+  color: var(--brand-dark);
+  text-decoration-thickness: 3px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--brand);
+  outline-offset: 3px;
+}
+/* ---------- 3. Page shell ---------- */
+#main {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+main > section,
+main > aside,
+main > figure {
+  margin: 0 0 32px;
+}
+
+h1 + p {
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+/* ---------- 4. Header and navigation ---------- */
+.site-header {
+  background: var(--brand-dark);
+  color: #fff;
+  padding: 12px 24px;
+}
+
+.brand {
+  color: #fff;
+  text-decoration: none;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+.nav-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+}
+
+.nav-list li {
+  display: inline-block;
+}
+
+.nav-list a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+.nav-list a:not(.active):hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.nav-list a.active {
+  background: var(--accent);
+  color: var(--text);
+  font-weight: 700;
+}
+.nav-list li {
+  display: inline-block;
+}
+
+.nav-list a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+.nav-list a:not(.active):hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.nav-list a.active {
+  background: var(--accent);
+  color: var(--text);
+  font-weight: 700;
+}
+
+/* ---------- 5. Footer ---------- */
+.site-footer {
+  background: var(--brand-dark);
+  color: #fff;
+  padding: 20px 24px;
+}
+
+.site-footer p {
+  margin: 4px 0;
+}
+
+.site-footer a {
+  color: #fff;
+}
+
+nav {
+  margin-top: 8px;
+}
+
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.site-footer {
+  background: var(--brand-dark);
+  color: #fff;
+  padding: 24px;
+  text-align: center;
+}
+
+.site-footer a {
+  color: #fff;
+}
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.site-nav a {
+  color: #fff;
+}
+
+.site-nav a:hover {
+  color: var(--accent);
+}
+
+.site-footer {
+  background: var(--brand-dark);
+  color: #fff;
+  padding: 24px;
+  text-align: center;
+}
+
+.site-footer a {
+  color: #fff;
+}
