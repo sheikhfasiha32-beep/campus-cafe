@@ -7,6 +7,7 @@
   <meta name="description" content="Order ahead from Campus Café and collect at the counter.">
   <title>Campus Café | Order</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/order.js" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -26,8 +27,98 @@
   </header>
 
   <main id="main">
-    <h1>Place an order</h1>
-    <p>The order form is coming in Task 3.</p>
+  <h1>Place an order</h1>
+  <p>Order ahead and collect from the counter. Fields marked * are required.</p>
+
+  <form id="order-form" action="#" method="post">
+    <fieldset>
+      <legend>Your details</legend>
+      <div class="form-row">
+        <div class="field">
+          <label for="name">Full name *</label>
+          <input type="text" id="name" name="name" required minlength="3"
+                 maxlength="50" placeholder="e.g. Ayesha Khan"
+                 autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="phone">Mobile number *</label>
+          <input type="tel" id="phone" name="phone" required
+                 pattern="03[0-9]{9}"
+                 title="11 digits starting with 03, for example 03001234567"
+                 placeholder="03001234567" autocomplete="tel">
+        </div>
+      </div>
+    </fieldset>
+        <fieldset>
+      <legend>Your order</legend>
+
+      <div class="form-row">
+        <div class="field">
+          <label for="item">Item *</label>
+          <select id="item" name="item" required>
+            <option value="">Choose an item...</option>
+            <option>Espresso</option>
+            <option>Cappuccino</option>
+            <option>Cafe Latte</option>
+            <option>Karak Chai</option>
+            <option>Iced Mocha</option>
+            <option>Cold Brew</option>
+            <option>Mango Smoothie</option>
+            <option>Chicken Sandwich</option>
+            <option>Chocolate Brownie</option>
+            <option>Cinnamon Roll</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="qty">Quantity *</label>
+          <input type="number" id="qty" name="qty" required min="1" max="10"
+                 value="1">
+        </div>
+        <div class="field">
+          <label for="pickup">Pickup time *</label>
+          <input type="time" id="pickup" name="pickup" required min="08:00"
+                 max="18:00">
+        </div>
+      </div>
+            <div class="form-row">
+        <fieldset class="choice">
+          <legend>Size</legend>
+          <label><input type="radio" name="size" value="Regular" checked> Regular</label>
+          <label><input type="radio" name="size" value="Large"> Large</label>
+        </fieldset>
+
+        <fieldset class="choice">
+          <legend>Extras</legend>
+          <label><input type="checkbox" name="extras" value="Extra shot"> Extra shot</label>
+          <label><input type="checkbox" name="extras" value="Whipped cream"> Whipped cream</label>
+          <label><input type="checkbox" name="extras" value="Soy milk"> Soy milk</label>
+        </fieldset>
+      </div>
+
+      <button type="submit" class="btn">Place order</button>
+      <p id="message" role="status" aria-live="polite"></p>
+    </form>
+
+    <section class="saved-orders">
+      <h2>Saved orders</h2>
+      <p>These are stored in this browser only.</p>
+      <div class="table-wrap">
+        <table>
+          <caption>Orders placed from this browser</caption>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Order</th>
+              <th scope="col">Qty</th>
+              <th scope="col">Pickup</th>
+              <th scope="col">Extras</th>
+            </tr>
+          </thead>
+          <tbody id="orders-body"></tbody>
+        </table>
+      </div>
+      <button type="button" id="clear-orders" class="btn btn-secondary">Clear all orders</button>
+    </section>
   </main>
 
   <footer class="site-footer">
