@@ -7,6 +7,7 @@
   <meta name="description" content="Order ahead from Campus Café and collect at the counter.">
   <title>Campus Café | Order</title>
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/order.js" defer></script>
 </head>
 <body id="top">
   <a class="skip-link" href="#main">Skip to main content</a>
@@ -27,7 +28,141 @@
 
   <main id="main">
     <h1>Place an order</h1>
-    <p>The order form is coming in Task 3.</p>
+    <p>Order ahead and collect from the counter. Fields marked * are required.</p>
+
+    <form id="order-form" action="#" method="post">
+      <fieldset>
+        <legend>Your details</legend>
+
+        <label for="customer-name">Full name *</label>
+        <input
+          type="text"
+          id="customer-name"
+          name="customerName"
+          required
+          minlength="3"
+          maxlength="50"
+          autocomplete="name"
+        >
+
+        <label for="customer-phone">Mobile number *</label>
+        <input
+          type="tel"
+          id="customer-phone"
+          name="customerPhone"
+          required
+          pattern="03[0-9]{9}"
+          title="Enter a Pakistani mobile number, for example 03001234567."
+          autocomplete="tel"
+        >
+      </fieldset>
+
+      <fieldset>
+        <legend>Your order</legend>
+
+        <label for="item">Choose an item *</label>
+        <select id="item" name="item" required>
+          <option value="">Select an item</option>
+          <option value="Espresso">Espresso</option>
+          <option value="Cappuccino">Cappuccino</option>
+          <option value="Cafe Latte">Cafe Latte</option>
+          <option value="Karak Chai">Karak Chai</option>
+          <option value="Iced Mocha">Iced Mocha</option>
+          <option value="Cold Brew">Cold Brew</option>
+          <option value="Mango Smoothie">Mango Smoothie</option>
+          <option value="Chicken Sandwich">Chicken Sandwich</option>
+          <option value="Chocolate Brownie">Chocolate Brownie</option>
+          <option value="Cinnamon Roll">Cinnamon Roll</option>
+        </select>
+
+        <label for="quantity">Quantity *</label>
+        <input
+          type="number"
+          id="quantity"
+          name="quantity"
+          min="1"
+          max="10"
+          value="1"
+          required
+        >
+
+        <label for="pickup-time">Pickup time *</label>
+        <input
+          type="time"
+          id="pickup-time"
+          name="pickupTime"
+          min="08:00"
+          max="18:00"
+          required
+        >
+
+        <p>Choose a size:</p>
+
+        <label>
+          <input type="radio" name="size" value="Small">
+          Small
+        </label>
+
+        <label>
+          <input type="radio" name="size" value="Medium" checked>
+          Medium
+        </label>
+
+        <label>
+          <input type="radio" name="size" value="Large">
+          Large
+        </label>
+
+        <p>Extras:</p>
+
+        <label>
+          <input type="checkbox" name="extras" value="Extra shot">
+          Extra shot
+        </label>
+
+        <label>
+          <input type="checkbox" name="extras" value="Oat milk">
+          Oat milk
+        </label>
+
+        <label>
+          <input type="checkbox" name="extras" value="Whipped cream">
+          Whipped cream
+        </label>
+
+        <label for="notes">Special instructions (optional)</label>
+        <textarea
+          id="notes"
+          name="notes"
+          rows="3"
+        ></textarea>
+      </fieldset>
+
+      <button type="submit">Place order</button>
+      <p id="message" role="status" aria-live="polite"></p>
+    </form>
+
+    <section aria-labelledby="saved-orders-heading">
+      <h2 id="saved-orders-heading">Saved orders</h2>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Item</th>
+              <th scope="col">Quantity</th>
+              <th scope="col">Size</th>
+              <th scope="col">Pickup time</th>
+              <th scope="col">Extras</th>
+            </tr>
+          </thead>
+          <tbody id="orders-body"></tbody>
+        </table>
+      </div>
+
+      <button type="button" id="clear-orders">Clear all orders</button>
+    </section>
   </main>
 
   <footer class="site-footer">

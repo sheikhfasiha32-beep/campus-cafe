@@ -214,6 +214,7 @@ figcaption {
 .price {
   font-weight: 700;
   color: var(--brand);
+  flex-shrink: 0;
 }
 
 table {
@@ -314,13 +315,14 @@ input[placeholder]:not(:placeholder-shown):invalid {
   z-index: 100;
 }
 
-/* Absolute: placed inside its nearest positioned parent */
+/* Absolute: badge stays inside its menu card */
 .menu-item { position: relative; }
 
 .badge {
   position: absolute;
   top: 12px;
   right: 12px;
+  z-index: 1;
   background: var(--accent);
   color: var(--text);
   font-size: 0.75rem;
@@ -420,11 +422,14 @@ input[placeholder]:not(:placeholder-shown):invalid {
   margin-bottom: 0;
 }
 
+/* Keep title and price from overlapping */
 .item-head {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: baseline;
-  gap: 12px;
+  gap: 8px 16px;
+  padding-right: 90px;
 }
 
 /* Keep the footer at the bottom of short pages */

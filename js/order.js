@@ -1,5 +1,5 @@
 
- // Lab 4: save orders in localStorage and show them safely.
+// Lab 4: save orders in localStorage and show them safely.
 const STORAGE_KEY = "cafeOrders";
 
 const form = document.querySelector("#order-form");
@@ -7,10 +7,11 @@ const tbody = document.querySelector("#orders-body");
 const message = document.querySelector("#message");
 const clearButton = document.querySelector("#clear-orders");
 
-// Read the saved orders. If nothing is saved, or the data is damaged, use an empty list.
+// Read the saved orders. If nothing is saved, use an empty list.
 function loadOrders() {
   try {
-    return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    const orders = JSON.parse(localStorage.getItem(STORAGE_KEY));
+    return Array.isArray(orders) ? orders : [];
   } catch (error) {
     return [];
   }
@@ -20,7 +21,7 @@ function saveOrders(orders) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(orders));
 }
 
-// Add one table cell. textContent treats the text as plain text, never as HTML.
+// Add one table cell safely.
 function addCell(row, text) {
   const cell = document.createElement("td");
   cell.textContent = text;
@@ -34,7 +35,7 @@ function render() {
   if (orders.length === 0) {
     const row = document.createElement("tr");
     const cell = document.createElement("td");
-    cell.colSpan = 5;
+    cell.colSpan = 6;
     cell.textContent = "No orders saved yet.";
     row.appendChild(cell);
     tbody.appendChild(row);
@@ -44,8 +45,9 @@ function render() {
   orders.forEach(function (order) {
     const row = document.createElement("tr");
     addCell(row, order.name);
-    addCell(row, order.item + " (" + order.size + ")");
+    addCell(row, order.item);
     addCell(row, String(order.qty));
+    addCell(row, order.size);
     addCell(row, order.pickup);
     addCell(row, order.extras.length ? order.extras.join(", ") : "none");
     tbody.appendChild(row);
@@ -57,13 +59,13 @@ form.addEventListener("submit", function (event) {
 
   const data = new FormData(form);
   const order = {
-    name: data.get("name").trim(),
-    phone: data.get("phone"),
+    name: data.get("customerName").trim(),
+    phone: data.get("customerPhone"),
     item: data.get("item"),
     size: data.get("size"),
-    qty: Number(data.get("qty")),
+    qty: Number(data.get("quantity")),
     extras: data.getAll("extras"),
-    pickup: data.get("pickup"),
+    pickup: data.get("pickupTime"),
     notes: data.get("notes").trim()
   };
 
