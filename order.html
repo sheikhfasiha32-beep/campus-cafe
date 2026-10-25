@@ -4,37 +4,220 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Order ahead from Campus Café and collect at the counter.">
-  <title>Campus Café | Order</title>
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-<body id="top">
-  <a class="skip-link" href="#main">Skip to main content</a>
+  <meta name="description" content="Place your food order at Campus Café.">
+  <title>Place an Order | Campus Café</title>
 
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/order.js" defer></script>
+</head>
+<body>
+
+  <!-- Header and Navigation -->
   <header class="site-header">
-    <a class="brand" href="index.html">
-      <img src="images/logo.svg" alt="" width="40" height="40">
-      <span>Campus Café</span>
-    </a>
-    <nav aria-label="Main">
+    <a class="brand" href="index.html">Campus Café</a>
+
+    <nav aria-label="Main navigation">
       <ul class="nav-list">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="menu.html">Menu</a></li>
-        <li><a href="order.html" class="active" aria-current="page">Order</a></li>
+        <li>
+          <a href="index.html">Home</a>
+        </li>
+        <li>
+          <a href="menu.html">Menu</a>
+        </li>
+        <li>
+          <a class="active" href="order.html" aria-current="page">Order</a>
+        </li>
       </ul>
     </nav>
   </header>
 
+  <!-- Main Content -->
   <main id="main">
-    <h1>Place an order</h1>
-    <p>The order form is coming in Task 3.</p>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1>Place Your Order</h1>
+      <p>Choose your favourite food and get your order ready for pickup.</p>
+    </section>
+
+    <!-- Order Form Card -->
+    <section class="card order-section">
+      <h2>Order Details</h2>
+
+      <form id="order-form">
+
+        <div class="form-row">
+          <div class="field">
+            <label for="customer-name">Full Name</label>
+            <input
+              type="text"
+              id="customer-name"
+              name="customerName"
+              placeholder="Enter your full name"
+              minlength="2"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="Enter your phone number"
+              pattern="[0-9+\-\s()]{7,20}"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="item">Select Menu Item</label>
+            <select id="item" name="item" required>
+              <option value="">Choose an item</option>
+              <option value="Coffee">Coffee</option>
+              <option value="Tea">Tea</option>
+              <option value="Burger">Burger</option>
+              <option value="Sandwich">Sandwich</option>
+              <option value="Pizza">Pizza</option>
+              <option value="Fries">Fries</option>
+              <option value="Cake">Cake</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="quantity">Quantity</label>
+            <input
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="1"
+              max="20"
+              value="1"
+              required
+            >
+          </div>
+        </div>
+
+        <div class="form-row">
+
+          <fieldset class="choice">
+            <legend>Size</legend>
+
+            <label>
+              <input type="radio" name="size" value="Small" required>
+              Small
+            </label>
+
+            <label>
+              <input type="radio" name="size" value="Medium">
+              Medium
+            </label>
+
+            <label>
+              <input type="radio" name="size" value="Large">
+              Large
+            </label>
+          </fieldset>
+
+          <fieldset class="choice">
+            <legend>Extras</legend>
+
+            <label>
+              <input type="checkbox" name="extras" value="Cheese">
+              Cheese
+            </label>
+
+            <label>
+              <input type="checkbox" name="extras" value="Extra Sauce">
+              Extra Sauce
+            </label>
+
+            <label>
+              <input type="checkbox" name="extras" value="Extra Sugar">
+              Extra Sugar
+            </label>
+          </fieldset>
+
+        </div>
+
+        <div class="field">
+          <label for="pickup">Pickup Time</label>
+          <input
+            type="time"
+            id="pickup"
+            name="pickup"
+            required
+          >
+        </div>
+
+        <div class="field">
+          <label for="notes">Special Instructions (Optional)</label>
+          <textarea
+            id="notes"
+            name="notes"
+            rows="4"
+            placeholder="Any special instructions?"
+          ></textarea>
+        </div>
+
+        <!-- Form Status Message -->
+        <p id="message" role="status" aria-live="polite"></p>
+
+        <!-- Form Buttons -->
+        <div class="button-row">
+          <button class="btn" type="submit">Place Order</button>
+          <button class="btn btn-secondary" type="reset">Clear Form</button>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- Saved Orders Card -->
+    <section class="card saved-orders">
+      <h2>Saved Orders</h2>
+      <p>Your orders saved in this browser will appear here.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Customer</th>
+              <th>Item</th>
+              <th>Qty</th>
+              <th>Size</th>
+              <th>Pickup</th>
+              <th>Extras</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody id="orders-list">
+            <tr>
+              <td colspan="7">No orders yet.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button
+        class="btn btn-secondary"
+        id="clear-orders"
+        type="button"
+      >
+        Clear All Orders
+      </button>
+    </section>
+
   </main>
 
+  <!-- Footer -->
   <footer class="site-footer">
-    <p>&copy; 2026 Campus Café &middot; Built for CIT331</p>
-    <p>Learn more: <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">MDN Web Docs</a></p>
+    <p>&copy; 2026 Campus Café</p>
+    <p>Fresh food, friendly service.</p>
   </footer>
 
-  <a class="back-to-top" href="#top" aria-label="Back to top">&uarr;</a>
 </body>
 </html>
