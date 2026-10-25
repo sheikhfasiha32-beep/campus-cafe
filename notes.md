@@ -12,3 +12,21 @@
 
 ## Why is this address http and not https?
 This address uses HTTP because Live Server is running a local development website on my computer. HTTPS is not configured for this local development server, so the browser uses HTTP instead.
+## Specificity experiment
+
+The #main p selector has higher specificity than .hero p, so it overrides the hero paragraph's white text color.
+## Selectors I used
+
+| Selector type | Example from my CSS |
+|---|---|
+| Element | `body` |
+| Class | `.card` |
+| ID | `#main` |
+| Grouping (comma) | `h1, h2, h3` |
+| Descendant (space) | `.menu-item p` |
+| Child (`>`) | `form > fieldset` |
+| Adjacent sibling (`+`) | `h1 + p` |
+| Compound (no space) | `a.active` |
+| Attribute | `input[required]` |
+| Pseudo-class | `a:hover` |
+| Pseudo-element | `::placeholder` |
